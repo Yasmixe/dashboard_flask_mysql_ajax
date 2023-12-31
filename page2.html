@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='style2.css')}}"/>	    <title>Dashbord</title>
+</head>
+<body>
+    <div class="grid-container">
+        <aside class="navbar">
+            <div class="logo">
+                <img src="{{url_for('static', filename='images/grid_6057695.png')}}" src="grid_6057695.png" alt="" width="20" height="20">
+                <h3 class="logotext">Pravan Tools.</h3>
+            </div>
+            <div class="navelements">
+                
+                <a href="/index" class="as">
+                    <div class="arrange">
+                        <img src="{{url_for('static', filename='images/home.png')}}"alt="" class="icon">
+                        <p>Acceuil</p>
+                    </div>
+                </a>
+                <a href="/datavisualization" class="as">
+                    <div class="arrange" >
+                        <img src="{{url_for('static', filename='images/data-analytics.png')}}" alt="" class="icon">
+                        <p>Data Visualization</p>
+
+                    </div>
+                </a>
+                <a href="/specialities" class="as">
+                    <div class="arrange">
+                        <img src="{{url_for('static', filename='images/search.png')}}" alt="" class="icon">
+                        <p>Specialities</p>
+                    </div>
+                </a>
+                <a href="/students" class="as">
+                    <div class="arrange">
+                        <img src="{{url_for('static', filename='images/student_8289404.png')}}"  alt="" class="icon">
+                        <p>Students</p>
+                    </div>
+                </a>
+                <a href="/years" class="as">
+                    <div class="arrange">
+                        <img src="{{url_for('static', filename='images/calendar_2886665.png')}}" alt="" class="icon">
+                        <p>Years</p>
+                    </div>
+                </a>
+                <div class="bas">
+                    <button id="refresh" onclick="loadData()">
+                        Actualiser
+                   </button>
+                    <a href="/">
+                        <div class="arrange">
+                            <img src="{{url_for('static', filename='images/logout_1828479.png')}}" alt="" class="icon">
+                            <p>Logout</p>
+                        </div>
+                    </a>
+                </div>
+             
+            </div>
+
+        </aside>
+        <main class="main">
+              <div class="card1">
+              </div>
+              <div class="card2">
+                <h2>Pravan Tool.</h2>
+                <p>Your Data visualization assistant. <br/>Manage and visualize your data easily and effeciently.</p>
+              </div>
+              <div class="card3">
+                <a href="#" id="imageLink">
+                    <img alt="" id="unsplashImage">
+                </a>
+              </div>
+              <div class="card4">
+                
+              </div>
+              
+              <!--To do liste -->
+            <div class="card6">
+                <div class="head">
+                    <div class="todoliste_title">
+                        <img src="{{url_for('static', filename='images/list_10408188.png')}}" alt="" width="25px" height="25px">
+                        <p>To do List</p>
+                    </div>
+                </div>
+                <div class="search">
+                    <input type="text" id="taskInput" placeholder="Add a new task">
+                    <button onclick="addTask()">
+                        <img src="{{url_for('static', filename='images/add_1237946.png')}}"  alt="" width="18px" height="18px">
+                    </button>
+                </div>
+                
+                <ul id="taskList"></ul>
+            </div>
+<!--weather card -->
+              <div class="card7">
+                <div class="search2">
+                    <input type="text" id="taskInput" placeholder="Enter city name...">
+                    <button >
+                        <img src="{{url_for('static', filename='images/search_8094123.png')}}"  alt="" width="18px" height="18px">
+                    </button>
+                </div>
+                <div class="weather">
+                    <img  src="{{url_for('static', filename='weather-app-img/images/mist.png')}}" class="weather_icon">
+                    <h1 class="temp">
+                        22 °c
+                    </h1>
+                    <h1 class="city">
+                        Seoul
+                    </h1>
+                </div>
+                
+              </div>
+              <div class="card8">
+                <div class="clock">
+                    <div class="wrapper">
+                        <h1 class="time">08:37</h1>
+                        <div class="details">
+                          <h3 class="ampm">Pm</h3>
+                          <h3 class="sec">20</h3>
+                        </div>
+                    </div>
+                    <div class="date">
+                      <span class="month">Dec,</span>
+                      <span class="dayofweek">Sunday</span>
+                      <span class="day">7</span>
+                    </div>
+
+                </div>
+                
+              </div>
+              <div class="card9">
+                <h3>Number Of Student In Each Field.</h3>
+                <div class="wrapper2">
+                    <div class="card a">
+                        Specialite 1
+                        <p></p>
+                    </div>
+                    <div class="card b">
+                        Specialite 2
+                        <p></p>
+                    </div>
+                    <div class="card c">
+                        Specialite 3
+                        <p></p>
+                    </div>
+                    <div class="card d">
+                        Specialite 4
+                        <p></p>
+                    </div>
+                    <div class="card e">
+                        Specialite 5
+                        <p></p>
+                    </div>
+                    <div class="card f">
+                        Specialite 6
+                        <p></p>
+                    </div>
+                    <div class="card g">
+                        Specialite 7
+                        <p></p>
+                    </div>
+                </div>
+                
+              </div>
+              <div class="card10">
+                
+              </div>
+        </main>
+    </div>
+
+
+	<script src="{{url_for('static', filename='script2.js')}}"></script>
+    <script src="{{url_for('static', filename='script1.js')}}"></script>
+
+</body>
+</html>

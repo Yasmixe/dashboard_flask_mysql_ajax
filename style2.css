@@ -1,0 +1,421 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    color: #35353f;
+    background-color: #dfecf2 ;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns:200px 1fr;
+    grid-template-areas: "sidenav main";
+    height: 100vh; 
+  }
+main{
+     grid-area: main;
+     display: grid;
+     grid-template-columns:  188px  188px 188px  188px 295px;
+     grid-template-rows: 70px 150px 60px 90px 90px;
+     grid-gap:25px;
+     padding-left: 70px;
+     padding-top: 20px;
+     padding-right: 40px;
+     position:relative;
+     padding-bottom: 5px;
+  
+  }
+.card1{
+      background-color: #d0e1e9;
+      grid-column-start: 1;
+      grid-column-end: 8;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      border-radius: 15px;
+  }
+  .navbar{
+      grid-area: sidenav;
+      display: flex;
+      flex-direction: column;
+      padding-top: 2.5vw;
+      justify-items: center;
+      align-items: center;
+      margin-left: 40px;
+  }
+  .logo{
+      display: flex;
+      
+  }
+  .logo h3{
+      margin-left: 10px;
+      margin-bottom: 15px;
+  }
+  
+  .navelements{
+      height: 500px;
+      margin-top: 50px;
+  }
+  .navelements a{
+      margin: 20px;
+  }
+  
+  .card3{
+      grid-column-start: 3;
+      grid-column-end: 4;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      background-color: #d0e1e9;
+      border-radius: 15px;
+  }
+  
+  .card4{
+      grid-column-start: 4;
+      grid-column-end: 5;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      background-color: #d0e1e9;
+      border-radius: 15px;
+  
+  }
+  
+  .card5{
+      grid-column-start: 4;
+      grid-column-end: 5;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      background-color: #d0e1e9;
+      border-radius: 15px;
+  
+  }
+  /*ta3 to do list*/
+  .card6{
+      grid-column-start: 5;
+      grid-column-end: 8;
+      grid-row-start: 2;
+      grid-row-end: 5;
+      background-color: #d0e1e9;
+      border-radius: 15px;
+  
+  }
+  
+  .card7{
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 3;
+      grid-row-end: 8;
+      background-color: #d0e1e9;
+      border-radius: 15px;
+  
+  }
+  
+  .card2{
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      background-color: #d0e1e9;
+      border-radius: 15px;
+      position: relative;
+      padding: 18px 15px;
+      text-justify: inter-word;
+      display: block;
+      overflow-wrap: break-word; 
+  }
+  
+  .card2 p, h2{
+     background-color: #d0e1e9;
+     margin-left: 10px;
+  }
+  
+  
+  .icon{
+      width: 20px;
+      height: 20px;
+  
+  }
+  .arrange{
+      display: flex;
+      
+  }
+  .arrange p{
+      padding-left: 7px;
+  }
+  .bas{
+      margin-top: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  button{
+      width: 130px;
+      height: 50px;
+      border-radius: 25px;
+      border: none;
+      background-color:#d0e1e9;
+      color: black;
+  }
+  
+  .logotext{
+      color: black;
+  }
+  
+  .todoliste_title{
+      display: flex;
+      background-color: #d0e1e9;
+  }
+  .todoliste_title p{
+      background-color: #d0e1e9;
+      margin-left: 15px;
+  }
+  .head, .bottom{
+      display: flex;
+      justify-content: space-between;
+      background-color: #d0e1e9;
+      margin: 25px 25px;
+  }
+  .card6 a img{
+      background-color: #d0e1e9;
+      margin-top: 3px;
+  }
+  .head a, .bottom a{
+      background-color: #d0e1e9;
+  }
+  
+  li{
+      list-style: none;
+      margin-top: 15px;
+      background-color: #d0e1e9;
+  
+  }
+  ul{
+      margin: 10px 40px;
+      background-color: #d0e1e9;
+  }
+  .card6 input{
+      width: 270px;
+      margin-left: 30px;
+      height: 30px;
+      border-radius: 10px;
+      border: none;
+      padding-left: 15px;
+      outline: none;
+  }
+  .myUL{
+      height: 200px;
+  }
+  .card6 button img {
+      font-weight: bolder;
+      background-color: #d0e1e9;
+  
+  
+  }
+  
+  .search{
+      display: flex;
+      background-color: #d0e1e9;
+
+  }
+  .search2{
+    display: flex;
+    background-color: #d0e1e9;
+
+}
+
+  a{
+    text-decoration: none;
+    font-size: 1rem ;
+}
+.search button{
+    width: 20px;
+    height: 20px;
+    background-color: #d0e1e9;
+    margin-left: 14px;
+    margin-top: 5px;
+
+}
+.search input{
+    border: 1px solid #35353f77;
+    background-color: #d0e1e9;
+    
+}
+.search2 input{
+    border: 1px solid #35353f77;
+    background-color: #d0e1e9; 
+}
+
+.card7 input{
+    width: 310px;
+    margin-left: 15px;
+    margin-top: 20px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+    border: 1px solid #35353f77;
+    padding-left: 10px;
+}
+.card7 .search2 button{
+    width: 45px;
+    height: 45px;
+    background-color: #d0e1e9;
+    margin-left: 7px;
+    margin-top: 17px;
+}
+
+.card7 .search2{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.card7 button img {
+    font-weight: bolder;
+    background-color: #d0e1e9;
+    width: 25px;
+    height: 25px;
+}
+
+.weather_icon{
+    width: 180px;
+    height: 180px;
+    background-color: #d0e1e9;
+    
+}
+.weather{
+    background-color: #d0e1e9;
+    margin-right: 17px;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.weather h1{
+    background-color: #d0e1e9;
+
+}
+
+
+.card8{
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    background-color: #35353f;
+    border-radius: 15px;
+    color: white; 
+}
+
+.card8 h1{
+    background-color: #35353f;
+    color: white;
+} 
+.details h3, .date span, .date{
+    background-color: #35353f;
+    color: white;
+}
+
+.clock{
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #35353f;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    background-color: #35353f;
+}
+
+.wrapper .time{
+    margin-left: 15px;
+    padding-right: 15px;
+    font-size: 3.3rem;
+    background-color: #35353f;
+
+}
+
+.date{
+    margin-top: 10px;
+    margin-left: 5px;
+    background-color: #35353f;
+
+}
+.details{
+    background-color: #35353f;
+
+}
+
+.card9{
+    grid-column-start: 3;
+      grid-column-end: 8;
+      grid-row-start: 5;
+      grid-row-end: 8;
+      background-color:#35353f;
+      border-radius: 15px;
+      padding: 25px 25px;
+    
+     color: white;
+}
+.wrapper2{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color:#35353f;
+    margin-top: 25px;
+
+}
+.card9 h3{
+    color: white;
+    background-color:#35353f;
+
+}
+.card{
+    background-color: white;
+    color: #35353f;
+    border-radius: 15px;
+    height: 60px;
+    width: 100px;
+    text-align: center;
+    padding: 5px 5px;
+
+
+}
+
+
+@property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+    background-color: rgba(255, 255, 255, 0.362);
+
+  }
+
+  .card p{
+    text-align: center;
+    animation: counter 5s ease-in-out;
+    counter-reset: num var(--num);
+    background-color:white;
+   
+}
+
+.card p::after{
+    content: counter(num);
+    background-color:white;
+}
+
+@keyframes counter {
+    from {
+      --num: 0;
+      background-color:white;
+    }
+    to {
+      --num: 100;
+      background-color:white;
+    }
+  }
