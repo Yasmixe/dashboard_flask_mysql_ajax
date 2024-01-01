@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    color: #35353f;
+    background-color: #dfecf2 ;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns:200px 1fr;
+    grid-template-areas: "sidenav main";
+    height: 100vh; 
+  }
+main{
+     grid-area: main;
+     display: grid;
+     
+     padding-left: 70px;
+     padding-top: 20px;
+     padding-right: 40px;
+     position:relative;
+     padding-bottom: 5px;
+  
+  }
+.navbar{
+    grid-area: sidenav;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2.5vw;
+    justify-items: center;
+    align-items: center;
+    margin-left: 40px;
+}
+.logo{
+    display: flex;
+    
+}
+.logo h3{
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.navelements{
+    height: 500px;
+    margin-top: 50px;
+}
+.navelements a{
+    margin: 20px;
+}
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+button{
+    width: 130px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background-color:#d0e1e9;
+    color: black;
+}
+
+.logotext{
+    color: black;
+}
+
+li{
+    list-style: none;
+    margin-top: 15px;
+    background-color: #d0e1e9;
+
+}
+ul{
+    margin: 10px 40px;
+    background-color: #d0e1e9;
+}
+
+a{
+    text-decoration: none;
+    font-size: 1rem ;}
+
+    .head, .bottom{
+        display: flex;
+        justify-content: space-between;
+        background-color: #d0e1e9;
+        margin: 25px 25px;
+    }
+
+
+    .arrange{
+        display: flex;
+        
+    }
+    .arrange p{
+        padding-left: 7px;
+    }
+    .bas{
+        margin-top: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }

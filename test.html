@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main class="main">
+        <div class="card" id="card1">	
+           
+            <div>
+                <canvas id="bar-chart-grouped" width="300" height="160"></canvas>
+            </div>
+        </div>
+        <div class="card" id="card9">
+            
+            <div class="card-content">    
+                <canvas id="mixed-chart-moyenne" height="400" width="600"></canvas>
+            </div>               
+        </div>
+        
+        
+        <div class="card" id="card2">	
+           
+            <div class="card-content">	
+                <canvas id="bar-chart" height="220" width="350"></canvas>
+            </div>				
+        </div>
+        <div class="card" id="card3">	
+           
+            <div class="card-content" >
+                <canvas id="line-chart" height="500" width="600"></canvas>
+            </div>
+        </div>
+        <div class="card" id="card4">		
+            
+            <div class="card-content" >
+                
+                <canvas id="pie-chart" height="220" width="350"></canvas>	
+            </div>
+        </div>
+        <div class="card" id="card11">
+           
+            <div class="card-content">	
+                <canvas id="line-chart-gender-variation" height="300" width="500"></canvas>
+            </div>				
+        </div>
+        
+        <div class="card" id="card10">
+            
+            <div class="card-content">	
+                <canvas id="doughnut-chart-gender" height="300" width="500"></canvas>
+            </div>				
+        </div>
+        
+        <div class="card" id="card5">		
+            
+            <div class="card-content" >
+                <canvas id="polar-chart" height="320" width="350"></canvas>	
+                
+            </div>
+        </div>
+        <div class="card" id="card6">
+            
+            <div class="card-content">    
+                <canvas id="horizontal-bar-chart-etudiants" height="400" width="600"></canvas>
+            </div>               
+        </div>
+        
+        
+        <div class="card" id="card7">
+            
+            <div class="card-content">    
+                <canvas id="bar-chart-echec-specialite" height="400" width="600"></canvas>
+            </div>               
+        </div>
+        
+        <div class="card" id="card12">
+           
+            <div class="card-content">	
+                <canvas id="radar-chart-avg-specialites" height="300" width="500"></canvas>
+            </div>				
+        </div>
+        
+        
+      </main>
+    <script src="{{url_for('static', filename='script3.js')}}"></script>
+
+</body>
+</html>

@@ -15,7 +15,7 @@
             </div>
             <div class="navelements">
                 
-                <a href="/index" class="as">
+                <a href="" class="as">
                     <div class="arrange">
                         <img src="{{url_for('static', filename='images/home.png')}}"alt="" class="icon">
                         <p>Acceuil</p>
@@ -28,13 +28,13 @@
 
                     </div>
                 </a>
-                <a href="/specialities" class="as">
+                <a href="/specialite" class="as">
                     <div class="arrange">
                         <img src="{{url_for('static', filename='images/search.png')}}" alt="" class="icon">
                         <p>Specialities</p>
                     </div>
                 </a>
-                <a href="/students" class="as">
+                <a href="/etudiant" class="as">
                     <div class="arrange">
                         <img src="{{url_for('static', filename='images/student_8289404.png')}}"  alt="" class="icon">
                         <p>Students</p>
@@ -50,7 +50,7 @@
                     <button id="refresh" onclick="loadData()">
                         Actualiser
                    </button>
-                    <a href="/">
+                    <a href="/debut">
                         <div class="arrange">
                             <img src="{{url_for('static', filename='images/logout_1828479.png')}}" alt="" class="icon">
                             <p>Logout</p>
@@ -63,6 +63,24 @@
         </aside>
         <main class="main">
               <div class="card1">
+                <h2>Bienvenue Yasmine</h2>
+                <div class="messages">
+                    <p>Messages</p>
+                    <img src="{{url_for('static', filename='chat_10322152.png')}}" alt="" class="icon">
+                </div>
+                <div class="notifs">
+                    <p>Notfications</p>
+                    <img src="{{url_for('static', filename='notif.png')}}" alt="" class="icon">
+                </div>
+                <div class="profile">
+                    <div class="line"></div>
+
+                <img src="{{url_for('static', filename='space.jpg')}}" alt="" class="icon22">
+                <p>Yasmine</p>
+                <img src="{{url_for('static', filename='arrow.png')}}" alt="" class="icon3" >
+
+                </div>
+                
               </div>
               <div class="card2">
                 <h2>Pravan Tool.</h2>
@@ -70,11 +88,13 @@
               </div>
               <div class="card3">
                 <a href="#" id="imageLink">
-                    <img alt="" id="unsplashImage">
+                    <img alt="" src="../static/seoul.jpg" class="imageicon">
                 </a>
               </div>
               <div class="card4">
-                
+                <a href="#" id="imageLink">
+                    <img alt="" src="../static/seoul2.jpg" class="imageicon2">
+                </a>
               </div>
               
               <!--To do liste -->

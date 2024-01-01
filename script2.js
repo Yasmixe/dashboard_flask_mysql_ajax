@@ -4,13 +4,42 @@ const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 const searchBox = document.querySelector(".search2 input");
 const searchBtn = document.querySelector(".search2 button");
 const weatherIcon = document.querySelector(".weather_icon");
+const icons = document.querySelector(".imageicon");
+const icons2 = document.querySelector(".imageicon2");
 async function checkweather(city){
 const response = await fetch(apiUrl + city+ `&appid=${apiKey}`);
 var data = await response.json();
 console.log(data);
 document.querySelector(".city").innerHTML = data.name;
 document.querySelector(".temp").innerHTML = Math.round(data.main.temp)  + "°c";
+if(data.name == "London")
+{
+   icons.src = "./static/lodon.jpg";
+   icons2.src = "./static/london2.jpg";
 
+}else{
+  if(data.name == "Algiers")
+{
+   icons.src = "./static/algiers.jpg";
+   icons2.src = "./static/alger2.JPG";
+}
+else{
+  if(data.name == "Iceland")
+{
+   icons.src = "./static/iceland.jpg";
+   icons2.src = "./static/iceland2.jpg";
+
+}
+else{
+  if(data.name == "Seoul")
+  {
+     icons.src = "./static/seoul.jpg";
+     icons2.src = "./static/seoul.jpg";
+  
+  }
+}
+}
+}
 if(data.weather[0].main == "Clouds")
 {
   weatherIcon.src = "./static/weather-app-img/images/clouds.png";
@@ -137,3 +166,4 @@ fetch(endpoint)
 .then(function(jsonData){
   imageElemet.src = jsonData.urls.regular;
 })
+
