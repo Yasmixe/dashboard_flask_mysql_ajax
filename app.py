@@ -96,22 +96,93 @@ def doGetData4():
 
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT DISTINCT  annee FROM resultats")
-    specialite_tuple = cursor.fetchall()
-    h = [item[0] for item in specialite_tuple]
-    for annee in h:
+    cursor.execute("SELECT DISTINCT annee FROM resultats")
+    annee_tuple = cursor.fetchall()
+    annees = [item[0] for item in annee_tuple]
+
+    for annee in annees:
+        # Count of failed results for females
         cursor.execute(
-            f"SELECT count(*)  from resultats where ANNEE={annee} and MOYENNE>=10"
+            f"SELECT COUNT(*) FROM resultats WHERE ANNEE={annee} AND MOYENNE < 10 AND SEXE='F'"
         )
-        p = cursor.fetchall()
-        p1 = [item[0] for item in p]
-        p2 = p1[0]
-        data4.append({"annee": annee, "data": p2})
+        count_females = cursor.fetchone()[0]
+
+        # Count of failed results for males
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE ANNEE={annee} AND MOYENNE < 10 AND SEXE='H'"
+        )
+        count_males = cursor.fetchone()[0]
+
+        data4.append(
+            {"annee": annee, "countFemales": count_females, "countMales": count_males}
+        )
 
     cursor.close()
 
-    data_JSON4 = json.dumps(data4)
-    return data_JSON4
+    return jsonify(data4)
+
+
+@app.route("/api/data5")
+def doGetData5():
+    data5 = []
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT annee FROM resultats")
+    annee_tuple = cursor.fetchall()
+    annees = [item[0] for item in annee_tuple]
+
+    for annee in annees:
+        # Count of all results for females
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE ANNEE={annee} AND SEXE='F'"
+        )
+        count_females = cursor.fetchone()[0]
+
+        data5.append({"annee": annee, "countFemales": count_females})
+
+    cursor.close()
+
+    return jsonify(data5)
+
+
+@app.route("/api/data6")
+def doGetData6():
+    data6 = []
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT annee FROM resultats")
+    annee_tuple = cursor.fetchall()
+    annees = [item[0] for item in annee_tuple]
+
+    for annee in annees:
+        # Your custom query for data6, for example, count of something else
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE ANNEE={annee} AND SEXE='H'"
+        )
+        count_data6 = cursor.fetchone()[0]
+
+        data6.append({"annee": annee, "countData6": count_data6})
+
+    cursor.close()
+
+    return jsonify(data6)
+
+
+@app.route("/api/data7")
+def doGetData7():
+    data7 = []
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT MOYENNE FROM resultats WHERE ANNEE = '2019'")
+    moyenne_data = cursor.fetchall()
+
+    for row in moyenne_data:
+        moyenne = row[0]
+        data7.append({"moyenne": moyenne})
+
+    cursor.close()
+
+    return jsonify(data7)
 
 
 if __name__ == "__main__":
