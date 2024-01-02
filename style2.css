@@ -356,11 +356,14 @@ align-items: center;
       grid-column-end: 8;
       grid-row-start: 5;
       grid-row-end: 8;
-      background-color:#35353f;
+      background-color:#d0e1e9;
       border-radius: 15px;
-      padding: 25px 25px;
+      padding: 40px 35px;
     
-     color: white;
+     color: #35353f;
+}
+.auteur, .quote{
+    margin-top: 10px;
 }
 .wrapper2{
     display: flex;
@@ -371,12 +374,16 @@ align-items: center;
 
 }
 .card9 h3{
-    color: white;
-    background-color:#35353f;
+    color: #35353f;
+    background-color:#d0e1e9;
 
 }
+.card9 p{
+    background-color:#d0e1e9;
+    color: #35353f;
+}
 .card{
-    background-color: white;
+    background-color:#d0e1e9;
     color: #35353f;
     border-radius: 15px;
     height: 60px;
@@ -388,37 +395,14 @@ align-items: center;
 }
 
 
-@property --num {
-    syntax: "<integer>";
-    initial-value: 0;
-    inherits: false;
-    background-color: rgba(255, 255, 255, 0.362);
-
-  }
-
   .card p{
     text-align: center;
     animation: counter 5s ease-in-out;
-    counter-reset: num var(--num);
-    background-color:white;
+    background-color:#d0e1e9;
    
 }
 
-.card p::after{
-    content: counter(num);
-    background-color:white;
-}
 
-@keyframes counter {
-    from {
-      --num: 0;
-      background-color:white;
-    }
-    to {
-      --num: 100;
-      background-color:white;
-    }
-  }
 
 .imageicon{
     width: 188px;
@@ -491,3 +475,7 @@ margin-top: 5px;
 .profile p{
     margin-right: 5px;
 }
+
+.wrapper3 h2{
+    margin-top: 20px;
+    }

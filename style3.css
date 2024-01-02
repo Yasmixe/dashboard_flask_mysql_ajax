@@ -209,3 +209,20 @@ a{
     margin-top: 50px;
     margin-left: 30px;
    }
+
+   .bubble{
+    display: flex;
+    flex-direction: column;
+   }
+
+#horizontal-bar-chart{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+th, table, td{
+    text-align: center;
+}
+
+
+

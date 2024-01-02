@@ -15,12 +15,12 @@ mysql = MySQL()
 mysql.init_app(app)
 
 
-@app.route("/debut")
+@app.route("/")
 def page1():
     return render_template("page1.html")
 
 
-@app.route("/")
+@app.route("/debut")
 def page2():
     return render_template("page2.html")
 
@@ -30,6 +30,18 @@ def page3():
     return render_template("etudiant.html")
 
 
+@app.route("/specialite")
+def page4():
+    return render_template("specialite.html")
+
+
+@app.route("/data")
+def page5():
+    return render_template("data.html")
+
+
+# page etudiant
+# display nbr etudiants par annee
 @app.route("/api/data")
 def doGetData():
     data2 = []
@@ -52,6 +64,7 @@ def doGetData():
     return data_JSON
 
 
+# display fourchette de moyenne
 @app.route("/api/data3")
 def doGetData3():
     data3 = {"annee": [], "datasets": []}
@@ -64,27 +77,23 @@ def doGetData3():
     annee_list = [item[0] for item in annee_tuple]
     data3["annee"] = annee_list
 
-    cursor.execute("SELECT DISTINCT SEXE FROM resultats")
+    moyenne_ranges = [(0, 9), (10, 12), (13, 15), (16, 20)]  # Define moyenne ranges
 
-    SEXE_tuple = cursor.fetchall()
-    SEXE_list = [item[0] for item in SEXE_tuple]
-
-    for SEXE in SEXE_list:
-        nombreetur_list1 = []
-        for annee in annee_list:
+    for annee in annee_list:
+        range_counts = []
+        for moyenne_range in moyenne_ranges:
+            min_range, max_range = moyenne_range
             cursor.execute(
-                "SELECT count(*) FROM resultats WHERE annee= "
-                + str(annee)
-                + " and SEXE='"
-                + SEXE
-                + "' and MOYENNE>=10"
+                f"SELECT COUNT(*) FROM resultats WHERE annee={annee} AND MOYENNE BETWEEN {min_range} AND {max_range}"
             )
-            nombreetur_tuple = cursor.fetchall()
-            nombreetur_list = [item[0] for item in nombreetur_tuple]
-            nombreetur_list2 = nombreetur_list[0]
-            nombreetur_list1.append(nombreetur_list2)
+            count_result = cursor.fetchall()
+            count_value = [item[0] for item in count_result]
+            range_counts.append(count_value[0])
 
-        data3["datasets"].append({"label": SEXE, "data": nombreetur_list1})
+        data3["datasets"].append({"label": str(annee), "data": range_counts})
+
+    cursor.close()
+    conn.close()
 
     data_JSON3 = json.dumps(data3)
     return data_JSON3
@@ -173,7 +182,9 @@ def doGetData7():
     data7 = []
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("SELECT MOYENNE FROM resultats WHERE ANNEE = '2019'")
+    cursor.execute(
+        "SELECT MOYENNE FROM resultats WHERE ANNEE = '2019' AND MOYENNE>=15 AND MOYENNE<=18 "
+    )
     moyenne_data = cursor.fetchall()
 
     for row in moyenne_data:
@@ -183,6 +194,246 @@ def doGetData7():
     cursor.close()
 
     return jsonify(data7)
+
+
+# page specialite
+@app.route("/api/data8")
+def doGetData8():
+    data8 = []
+
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    specialites = [
+        "SPECIALITE_1",
+        "SPECIALITE_2",
+        "SPECIALITE_3",
+        "SPECIALITE_4",
+        "SPECIALITE_5",
+        "SPECIALITE_6",
+        "SPECIALITE_7",
+    ]  # Replace with your actual specialite names
+
+    for specialite in specialites:
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE specialite='{specialite}'"
+        )
+        count_result = cursor.fetchall()
+        count_value = [item[0] for item in count_result]
+
+        data8.append({"specialite": specialite, "data": count_value[0]})
+
+    cursor.close()
+
+    data_JSON8 = json.dumps(data8)
+    return data_JSON8
+
+
+@app.route("/api/data9")
+def doGetData9():
+    data9 = []
+
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    specialites = [
+        "SPECIALITE_1",
+        "SPECIALITE_2",
+        "SPECIALITE_3",
+        "SPECIALITE_4",
+        "SPECIALITE_5",
+        "SPECIALITE_6",
+        "SPECIALITE_7",
+    ]  # Replace with your actual specialite names
+
+    for specialite in specialites:
+        # Success count
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE specialite='{specialite}' AND moyenne >= 10"
+        )
+        success_result = cursor.fetchall()
+        success_value = [item[0] for item in success_result]
+
+        # Fail count
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE specialite='{specialite}' AND moyenne < 10"
+        )
+        fail_result = cursor.fetchall()
+        fail_value = [item[0] for item in fail_result]
+
+        data9.append(
+            {
+                "specialite": specialite,
+                "success": success_value[0],
+                "fail": fail_value[0],
+            }
+        )
+
+    cursor.close()
+
+    data_JSON9 = json.dumps(data9)
+    return data_JSON9
+
+
+@app.route("/api/data10")
+def doGetData10():
+    data10 = []
+
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    specialites = [
+        "SPECIALITE_1",
+        "SPECIALITE_2",
+        "SPECIALITE_3",
+        "SPECIALITE_4",
+        "SPECIALITE_5",
+        "SPECIALITE_6",
+        "SPECIALITE_7",
+    ]  # Replace with your actual specialite names
+
+    for specialite in specialites:
+        cursor.execute(
+            f"SELECT AVG(moyenne) FROM resultats WHERE specialite='{specialite}'"
+        )
+        avg_result = cursor.fetchall()
+        avg_value = [item[0] for item in avg_result]
+
+        data10.append({"specialite": specialite, "average": avg_value[0]})
+
+    cursor.close()
+
+    data_JSON10 = json.dumps(data10)
+    return data_JSON10
+
+
+@app.route("/api/data11")
+def doGetData11():
+    data11 = []
+
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    specialites = [
+        "SPECIALITE_1",
+        "SPECIALITE_2",
+        "SPECIALITE_3",
+        "SPECIALITE_4",
+        "SPECIALITE_5",
+        "SPECIALITE_6",
+        "SPECIALITE_7",
+    ]  # Replace with your actual specialite names
+
+    for specialite in specialites:
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE specialite='{specialite}' AND sexe='F'"
+        )
+        count_femme_result = cursor.fetchall()
+        count_femme_value = [item[0] for item in count_femme_result]
+
+        cursor.execute(
+            f"SELECT COUNT(*) FROM resultats WHERE specialite='{specialite}' AND sexe='H'"
+        )
+        count_homme_result = cursor.fetchall()
+        count_homme_value = [item[0] for item in count_homme_result]
+
+        data11.append(
+            {
+                "specialite": specialite,
+                "count_femme": count_femme_value[0],
+                "count_homme": count_homme_value[0],
+            }
+        )
+
+    cursor.close()
+
+    data_JSON11 = json.dumps(data11)
+    return data_JSON11
+
+
+@app.route("/api/data12")
+def doGetData12():
+    data12 = []
+    conn = mysql.connect()
+    cursor = conn.cursor()
+
+    specialites = [
+        "SPECIALITE_1",
+        "SPECIALITE_2",
+        "SPECIALITE_3",
+        "SPECIALITE_4",
+        "SPECIALITE_5",
+        "SPECIALITE_6",
+        "SPECIALITE_7",
+    ]
+
+    for specialite in specialites:
+        # Maximum Moyenne
+        cursor.execute(
+            f"SELECT MAX(MOYENNE) FROM resultats WHERE SPECIALITE = '{specialite}'"
+        )
+        max_moyenne_result = cursor.fetchone()
+        max_moyenne = max_moyenne_result[0] if max_moyenne_result else None
+
+        # Minimum Moyenne
+        cursor.execute(
+            f"SELECT MIN(MOYENNE) FROM resultats WHERE SPECIALITE = '{specialite}'"
+        )
+        min_moyenne_result = cursor.fetchone()
+        min_moyenne = min_moyenne_result[0] if min_moyenne_result else None
+
+        data12.append(
+            {
+                "specialite": specialite,
+                "max_moyenne": max_moyenne,
+                "min_moyenne": min_moyenne,
+            }
+        )
+
+    cursor.close()
+
+    return jsonify(data12)
+
+
+@app.route("/api/data13")
+def doGetData13():
+    data13 = []
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT MOYENNE FROM resultats WHERE SPECIALITE = 'SPECIALITE_2'")
+    moyenne_data = cursor.fetchall()
+
+    for row in moyenne_data:
+        moyenne = row[0]
+        data13.append({"moyenne": moyenne})
+
+    cursor.close()
+
+    return jsonify(data13)
+
+
+@app.route("/api/data14")
+def get_all_data():
+    data14 = []
+
+    try:
+        conn = mysql.connect()
+        cursor = conn.cursor()
+
+        # Fetch all rows from the resultats table
+        cursor.execute("SELECT * FROM resultats WHERE MOYENNE >=16.9")
+        resultats_data = cursor.fetchall()
+
+        for row in resultats_data:
+            data14.append(row)
+
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
+    return jsonify(data14)
 
 
 if __name__ == "__main__":
