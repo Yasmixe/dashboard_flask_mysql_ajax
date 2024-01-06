@@ -412,55 +412,5 @@ def doGetData13():
     return jsonify(data13)
 
 
-@app.route("/api/data14")
-def get_all_data():
-    data14 = []
-
-    try:
-        conn = mysql.connect()
-        cursor = conn.cursor()
-
-        # Fetch all rows from the resultats table
-        cursor.execute("SELECT * FROM resultats WHERE MOYENNE >=16")
-        resultats_data = cursor.fetchall()
-
-        for row in resultats_data:
-            data14.append(row)
-
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cursor.close()
-        conn.close()
-
-    return jsonify(data14)
-
-
-@app.route("/api/data15")
-def get_all_data2():
-    data15 = []
-
-    try:
-        conn = mysql.connect()
-        cursor = conn.cursor()
-
-        # Fetch the top 100 rows for each specialite from the resultats table
-        cursor.execute(
-            """SELECT * FROM resultats  WHERE (specialite, ID) IN (SELECT specialite, ID  FROM resultats ORDER BY specialite, ID  LIMIT 100) ORDER BY specialite, ID """
-        )
-        resultats_data = cursor.fetchall()
-
-        for row in resultats_data:
-            data15.append(row)
-
-    except Exception as e:
-        print(f"Error: {e}")
-    finally:
-        cursor.close()
-        conn.close()
-
-    return jsonify(data15)
-
-
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

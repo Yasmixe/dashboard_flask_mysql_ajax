@@ -21,7 +21,7 @@ main{
      padding-top: 20px;
      padding-right: 40px;
      position:relative;
-     margin-bottom: 30px;
+     padding-bottom: 15px;
   
   }
 .navbar{
@@ -231,7 +231,10 @@ table{
 }
 
 
-.wrapper3 h2{
-margin-top: 30px;
+aside{
+    position: fixed;
 }
 
+.wrapper3 h2{
+    margin-top: 30px;
+}

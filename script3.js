@@ -177,6 +177,20 @@ var httpRequest14 = new XMLHttpRequest();
         }
     };
     httpRequest14.send();
+/*-------------------------------------------------------------*/
+var httpRequest15 = new XMLHttpRequest();
+    httpRequest15.open('GET', '/api/data15');
+    httpRequest15.onreadystatechange = function () {
+        if (httpRequest15.readyState === 4) {
+            if (httpRequest15.status === 200) {
+                var data_JSON15 = JSON.parse(httpRequest15.response);
+                createTable(data_JSON15);
+            } else {
+                console.error("Error fetching data:", httpRequest15.status);
+            }
+        }
+    };
+    httpRequest15.send();
 }
 
 function update_Bars(data_JSON){	
@@ -622,7 +636,6 @@ function createTable(data) {
     var table = document.createElement("table");
     table.style.borderCollapse = "collapse";
     table.style.width = "100%";
-    table.style.border = "1px solid #ddd"; // Border style
 
     var thead = table.createTHead();
     var tbody = table.createTBody();
@@ -633,7 +646,6 @@ function createTable(data) {
 
     for (var i in data[0]) {
         var th = document.createElement("th");
-        th.style.border = "1px solid #ddd"; // Border style
         th.appendChild(document.createTextNode(key[i]));
         headerRow.appendChild(th);
         th.style.textAlign = "center";
@@ -654,7 +666,6 @@ function createTable(data) {
 
         for (var key in row) {
             var cell = tr.insertCell();
-            cell.style.border = "1px solid #ddd"; // Border style
             cell.appendChild(document.createTextNode(row[key]));
         }
     });
