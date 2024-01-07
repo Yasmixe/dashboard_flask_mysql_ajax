@@ -236,5 +236,14 @@ aside{
 }
 
 .wrapper3 h2{
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+.card1{
+    position: fixed;
+    height: 60px;
+    width: 1210px;
+    margin-left: 70px;
     margin-top: 30px;
 }

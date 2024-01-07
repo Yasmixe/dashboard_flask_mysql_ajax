@@ -107,10 +107,29 @@ a{
     .first{
         display: flex;
     }
-
+.first #card9{
+margin: 0px 20px;
+}
+.first #card3{
+    margin: 0px 20px;
+    }
     .second{
         display: flex;
     }
+    .second #card10{
+        margin: 0px 20px;
+        }
+        .second #card4{
+            margin: 0px 2px;
+            }
+
+            .second #card5{
+                margin: 0px 20px;
+                }
+                .second #card11{
+                    margin: 0px 2px;
+                    }
+        
     .all{
         display: flex;
         margin-top: 10px;
@@ -216,8 +235,8 @@ a{
    }
 
 #horizontal-bar-chart{
-    margin-left: 50px;
-    margin-top: 50px;
+    margin-left: 20px;
+    margin-top: 100px;
 }
 
 th, table, td{
@@ -235,3 +254,8 @@ table{
 margin-top: 30px;
 }
 
+#bar-chart-8, #bar-chart, #line-chart-9,#line-chart-3, #bar2-chart,#bar3-chart,#bubble-chart, #pie-chart-avg, #doughnut-chart, #horizontal-bar-chart{
+    background-color: #d0e1e9;
+    border-radius: 20px;
+    color: black;
+}
